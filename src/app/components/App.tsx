@@ -10,8 +10,8 @@ function App() {
   }, []);
 
   const onClick = () => {
-    const count = textbox.current.value;
-    parent.postMessage({ pluginMessage: { type: 'rename-layers', count } }, '*');
+    const selectedName = textbox.current.value;
+    parent.postMessage({ pluginMessage: { type: 'rename-layers', selectedName } }, '*');
   };
 
   React.useEffect(() => {
