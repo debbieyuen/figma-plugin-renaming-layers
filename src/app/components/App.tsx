@@ -1,23 +1,27 @@
 import React from 'react';
-import logo from '../assets/logo.svg';
 import '../styles/ui.css';
 
 function App() {
   const textbox = React.useRef<HTMLInputElement>(undefined);
 
   const countRef = React.useCallback((element: HTMLInputElement) => {
-    if (element) element.value = '5';
+    if (element) element.value = 'New Layer Name';
     textbox.current = element;
   }, []);
 
-  const onCreate = () => {
-    const count = parseInt(textbox.current.value, 10);
+
+
+  const onClick = () => {
+    const count = textbox.current.value;
+    // const count = parseInt(textbox.current.value, 10);
     parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*');
+    // Print out input from user
+    console.log(count);
   };
 
-  const onCancel = () => {
-    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-  };
+  // const onCancel = () => {
+  //   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+  // };
 
   React.useEffect(() => {
     // This is how we read messages sent from the plugin controller
@@ -31,15 +35,17 @@ function App() {
 
   return (
     <div>
-      <img src={logo} />
-      <h2>Rectangle Creator</h2>
+      {/* <img src={logo} /> */}
+      <h2>Renaming Layers</h2>
       <p>
-        Count: <input ref={countRef} />
+      Automatically and quickly rename your layer names! In the input space below, type in the name of your choice. The text input will rename to whatever naming convention of your choice. 
       </p>
-      <button id="create" onClick={onCreate}>
-        Create
+      <input id="text" ref={countRef} />
+      <button id="create" onClick={onClick}>
+        Rename
       </button>
-      <button onClick={onCancel}>Cancel</button>
+      
+      {/* <button onClick={onCancel}>Cancel</button> */}
     </div>
   );
 }
