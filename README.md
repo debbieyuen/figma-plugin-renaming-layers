@@ -1,5 +1,7 @@
-# Figma Plugin: Renaming Layers
-A Figma plugin that simplifies renaming layers and components. Streamline your refactoring process while designing in Figma by cleaning up your layers by renaming them at once or individually by selecting any layer or component. 
+# Figma Plugin: Renaming Layers 🎉
+A Figma plugin that simplifies renaming layers and components by streamlining your refactoring process. While designing in Figma, clean up your layers by renaming duplicates and variations of a component within the same layer all at once! For example, rename all `buttons` within a parent component in one go while excluding nodes of different types such as `text`, `spacers`, and `images`. 
+
+https://github.com/debbieyuen/figma-plugin-renaming-layers/assets/31296177/41a4e166-0164-477c-a638-39d9c651f469
 
 ## Requirements
 * [Figma Desktop App](https://www.figma.com/downloads/)
