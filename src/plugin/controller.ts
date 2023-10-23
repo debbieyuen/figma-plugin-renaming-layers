@@ -5,17 +5,30 @@ figma.ui.onmessage = (msg) => {
   console.log(msg.count);
 
   // Grab specific layers
-  const takeActionButton = figma.root.findOne(node => "COMPONENT" && node.name == "Take action") as ComponentNode;
-  const twoWheelsTile = figma.root.findOne(node => "COMPONENT" && node.name == "Square buttons") as ComponentNode;
-  const homeAddress = figma.root.findOne(node => "COMPONENT" && node.name == "list #1") as ComponentNode;
+  // const takeActionButton = figma.root.findOne(node => "COMPONENT" && node.name == "Take action") as ComponentNode;
+  // const twoWheelsTile = figma.root.findOne(node => "COMPONENT" && node.name == "Square buttons") as ComponentNode;
+  // const homeAddress = figma.root.findOne(node => "COMPONENT" && node.name == "list #1") as ComponentNode;
   
   // Select user's selected component
   const selectedComponent = figma.currentPage.selection;
+  const selectedSiblings = selectedComponent[0].parent.children;
 
-  // Change the name of the component
+  // If user is selecting a component
   if (selectedComponent) {
-    selectedComponent[0].name = msg.count;
+    // Loop through and find its siblings
+    for (let i = 0; i < selectedSiblings.length; i++) {
+      // Check to make sure its the same type of component 
+      if (selectedSiblings[i].type == selectedComponent[0].type && selectedSiblings[i].height == selectedComponent[0].height && selectedSiblings[i].width == selectedComponent[0].width) {
+        selectedSiblings[i].name = msg.count;
+      }
+      
+    }
   }
+
+  // for (let i = 0; i < takeActionButton.parent.children.length; i++) {
+  //   if (takeActionButton.parent.children[i].type ==)
+  //   takeActionButton.parent.children[i].name = msg.count;
+  // }
 
   // Change the name of specific layers
   // takeActionButton.name = msg.count;
@@ -23,14 +36,18 @@ figma.ui.onmessage = (msg) => {
   // homeAddress.name = msg.count;
 
   // Debugging
-  console.log(takeActionButton);
-  console.log(takeActionButton.name);
+  // console.log(takeActionButton);
+  // console.log(takeActionButton.name);
+  // console.log(homeAddress.children);
+  // console.log("Parent Name: " + homeAddress.parent.name);
+  // console.log("Siblings: " + homeAddress.parent.children);
+  // console.log("Number of Children: " + homeAddress.children.length);
 
-  console.log(twoWheelsTile);
-  console.log(twoWheelsTile.name);
+  // console.log(twoWheelsTile);
+  // console.log(twoWheelsTile.name);
 
-  console.log(homeAddress);
-  console.log(homeAddress.name);
+  // console.log(homeAddress);
+  // console.log(homeAddress.name);
 
   if (msg.type === 'rename-layers') {
 
@@ -44,5 +61,5 @@ figma.ui.onmessage = (msg) => {
     });
   }
 
-  figma.closePlugin();
+  // figma.closePlugin();
 };
