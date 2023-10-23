@@ -13,18 +13,11 @@ function App() {
 
   const onClick = () => {
     const count = textbox.current.value;
-    // const count = parseInt(textbox.current.value, 10);
     parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*');
-    // Print out input from user
-    console.log(count);
   };
 
-  // const onCancel = () => {
-  //   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-  // };
-
   React.useEffect(() => {
-    // This is how we read messages sent from the plugin controller
+    // Read messages sent from the plugin controller
     window.onmessage = (event) => {
       const { type, message } = event.data.pluginMessage;
       if (type === 'create-rectangles') {
@@ -35,17 +28,10 @@ function App() {
 
   return (
     <div>
-      {/* <img src={logo} /> */}
       <h2>Renaming Layers</h2>
-      <p>
-      Automatically and quickly rename your layer names! In the input space below, type in the name of your choice. The text input will rename to whatever naming convention of your choice. 
-      </p>
+      <p>Automatically and quickly rename your layer names! In the input space below, type in the name of your choice. The text input will rename to whatever naming convention of your choice. </p>
       <input id="text" ref={countRef} />
-      <button id="create" onClick={onClick}>
-        Rename
-      </button>
-      
-      {/* <button onClick={onCancel}>Cancel</button> */}
+      <button id="create" onClick={onClick}>Rename</button>
     </div>
   );
 }
