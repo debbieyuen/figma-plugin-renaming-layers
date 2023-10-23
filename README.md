@@ -1,23 +1,31 @@
-# Figma Plugin React Template
+# Figma Plugin: Renaming Layers
+A Figma plugin that simplifies renaming layers and components. Streamline your refactoring process while designing in Figma by cleaning up your layers by renaming them at once or individually by selecting any layer or component. 
 
-![62862431-71537f00-bd0e-11e9-85db-d97c0fb729a4](https://user-images.githubusercontent.com/16322616/62862692-46b5f600-bd0f-11e9-93b0-75955d1de8f3.png)
+## Requirements
+* [Figma Desktop App](https://www.figma.com/downloads/)
+* [TypeScript ^4.7.4](https://www.typescriptlang.org/)
+* [React ^18.2.0](https://react.dev/learn/installation)
+* [Webpack ^5.74.0](https://webpack.js.org/guides/installation/)
+* [Prettier ^2.7.1](https://prettier.io/docs/en/install.html)
 
-This template contains the react example as shown on [Figma Docs](https://www.figma.com/plugin-docs/intro/), with some structural changes and extra tooling.
+## Set Up
 
-## Quickstart
+Clone the repository
+```bash
+$ git clone https://github.com/debbieyuen/figma-plugin-renaming-layers.git
+```
 
-- Run `yarn` to install dependencies.
-- Run `yarn build:watch` to start webpack in watch mode.
-- Open `Figma` -> `Plugins` -> `Development` -> `Import plugin from manifest...` and choose `manifest.json` file from this repo.
+Install dependencies with `npm`.
+```bash
+$ npm install --save-dev @figma/plugin-typings
+$ npm install figma-plugin-ds 
+```
 
-⭐ To change the UI of your plugin (the react code), start editing [App.tsx](./src/app/components/App.tsx).  
-⭐ To interact with the Figma API edit [controller.ts](./src/plugin/controller.ts).  
-⭐ Read more on the [Figma API Overview](https://www.figma.com/plugin-docs/api/api-overview/).
+Run `npm:build:watch` to start webpack in watch mode. Or in VSCode Mac, `shift` `command` `B` and select `npm:build:watch`. Within the Figma app, open `Figma` -> `Plugins` -> `Development` -> `Import plugin from manifest...` and choose `manifest.json` file from this repo.
+```bash
+$ npm run build:watch 
+```
 
-## Toolings
-
-This repo is using:
-
-- React + Webpack
-- TypeScript
-- Prettier precommit hook
+## Credits and References
+* [Figma API Overview](https://www.figma.com/plugin-docs/api/api-overview/)
+* [Figma Plugin React](https://github.com/nirsky/figma-plugin-react-template)
