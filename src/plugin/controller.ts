@@ -32,14 +32,14 @@ figma.ui.onmessage = (msg) => {
   console.log(homeAddress);
   console.log(homeAddress.name);
 
-  if (msg.type === 'create-rectangles') {
+  if (msg.type === 'rename-layers') {
 
     figma.currentPage.selection = selectedComponent;
     figma.viewport.scrollAndZoomIntoView(selectedComponent);
 
     // This is how figma responds back to the ui
     figma.ui.postMessage({
-      type: 'create-rectangles',
+      type: 'rename-layers',
       message: `Modified layer's name to ${msg.count}`,
     });
   }

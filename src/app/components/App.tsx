@@ -9,18 +9,16 @@ function App() {
     textbox.current = element;
   }, []);
 
-
-
   const onClick = () => {
     const count = textbox.current.value;
-    parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*');
+    parent.postMessage({ pluginMessage: { type: 'rename-layers', count } }, '*');
   };
 
   React.useEffect(() => {
     // Read messages sent from the plugin controller
     window.onmessage = (event) => {
       const { type, message } = event.data.pluginMessage;
-      if (type === 'create-rectangles') {
+      if (type === 'rename-layers') {
         console.log(`Figma Says: ${message}`);
       }
     };
